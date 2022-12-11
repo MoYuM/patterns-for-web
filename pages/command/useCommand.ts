@@ -1,20 +1,24 @@
 import React from 'react';
+import { Context } from './index';
 import { Command } from './commands';
-import Context from '../Context';
 
-const useCommand = (command: Command) => {
+const useCommand = () => {
 	const context = React.useContext(Context);
+	const stack = React.useRef<any[]>([]);
 
-	const { execute, canExecute, undo } = command(context);
+	const execute = (command: Command, params?: any) => {
+		const commandOjb = command(context);
+		stack.current.push(commandOjb);
+		commandOjb.execute(params);
+	}
+
+	const undo = () => {
+		const obj = stack.current.pop();
+		obj.undo();
+	}
 
 	return {
-		execute: () => {
-			if (canExecute()) {
-				execute();
-			} else {
-				console.log('can not execute this command')
-			}
-		},
+		execute,
 		undo,
 	}
 };
