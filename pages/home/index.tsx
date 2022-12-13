@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 
+
 export default () => {
   const router = useRouter();
 
-  const goCommandPattern = () => router.push('/command');
+  const goCommandPattern = () => router.push('/patterns/command');
 
   return (
     <div className="contianer bg-slate-100 flex justify-center h-screen">

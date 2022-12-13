@@ -27,25 +27,27 @@ const CommandPattern = () => {
     undo();
   }
 
+  const onEnterDown = (e: any) => {
+    if (e.code === 'Enter') {
+      onAdd(value);
+    }
+  }
+
   return (
-    <div className="h-screen bg-slate-100 w-full flex justify-center">
+    <div className="bg-slate-100 w-full flex justify-center">
       <div className="w-2/3 mt-20">
         <div className="mb-10">
           <button onClick={onUndo} className="bg-orange-700 text-white px-3 rounded-lg text-lg cursor-pointer">undo</button>
           {/* <button className="bg-pink-700 ml-5 text-white px-3 rounded-lg text-lg cursor-pointer">reundo</button> */}
         </div>
-        <input type="text" onKeyDown={(e) => {
-          if (e.code === 'Enter') {
-            onAdd(value);
-          }
-        }} className="w-full h-20 border-orange-500 border-2 rounded-2xl pl-10 text-2xl" value={value} onChange={(e) => onChange(e.target.value)} />
+        <input type="text" onKeyDown={onEnterDown} className="w-full h-20 border-orange-500 border-2 rounded-2xl pl-10 text-2xl" value={value} onChange={(e) => onChange(e.target.value)} />
         <ul className="w-full text-2xl mt-5">
           {list.map((i) => (
             <li className="py-2 flex justify-between border-2 px-4 rounded-lg items-center mb-4" key={i.key}>
               <span className={`font-bold ${i.status === 'finished' ? 'line-through text-gray-400' : ''}`}>{i.todo}</span>
               <div className="text-lg">
-                <span className="cursor-pointer text-orange-500 font-bold" onClick={() => onDelete(i.key)}>delete</span>
-                <span className="ml-5 cursor-pointer text-pink-500 font-bold" onClick={() => onFinish(i.key)}>finish</span>
+                <span className="cursor-pointer text-orange-500 font-bold" onClick={() => onDelete(i.key)}>DELETE</span>
+                <span className="ml-5 cursor-pointer text-pink-500 font-bold" onClick={() => onFinish(i.key)}>FINISH</span>
               </div>
             </li>
           ))}

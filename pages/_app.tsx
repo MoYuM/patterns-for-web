@@ -1,15 +1,14 @@
 import type { AppProps } from 'next/app'
-import Context from './Context'
 import React from 'react';
 import '../styles/global.css';
+import { MDXProvider } from '@mdx-js/react';
 
 export default function App({ Component, pageProps }: AppProps) {
 
-  const [value, setValue] = React.useState('');
 
   return (
-    <Context.Provider value={{ canLog: true, value, setValue }}>
+    <MDXProvider>
       <Component {...pageProps} />
-    </Context.Provider>
+    </MDXProvider>
   )
 }

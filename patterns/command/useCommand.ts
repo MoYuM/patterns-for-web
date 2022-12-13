@@ -14,7 +14,9 @@ const useCommand = () => {
 
 	const undo = () => {
 		const obj = stack.current.pop();
-		obj.undo();
+		if (obj) {
+			obj.undo();
+		}
 	}
 
 	return {
