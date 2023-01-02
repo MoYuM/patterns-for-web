@@ -24,7 +24,7 @@ export default () => {
     <div className="contianer flex justify-center h-screen">
       <div className="w-4/5">
         <div className="text-5xl font-extrabold text-center mt-20">
-          <span className="text-9xl font-black text-transparent text-sky-50 drop-shadow-xl font-sans">
+          <span className="text-9xl font-black  text-sky-50 drop-shadow-xl font-sans">
             Patterns For Web
           </span>
         </div>
