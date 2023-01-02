@@ -1,16 +1,22 @@
 import type { AppProps } from 'next/app'
 import React from 'react';
 import '../styles/global.css';
-import { MDXProvider } from '@mdx-js/react';
 import Layout from 'components/layout';
+import MdLayout from 'components/mdLayout';
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
 
-  return (
-    <MDXProvider>
+  if (router.pathname.includes('patterns')) {
+    return (
+      <MdLayout>
+        <Component {...pageProps} />
+      </MdLayout>
+    )
+  } else {
+    return (
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </MDXProvider>
-  )
+    )
+  }
 }

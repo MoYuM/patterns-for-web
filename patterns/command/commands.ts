@@ -1,4 +1,3 @@
-import React from "react";
 import type { Context } from './index';
 
 export type Command = (context: Context) => {
