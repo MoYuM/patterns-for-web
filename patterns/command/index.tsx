@@ -40,25 +40,26 @@ const CommandPattern: React.FC<{
     }
 
     return (
-      <div className="not-prose" style={style}>
-        <div className="mt-5">
+      <div className="not-prose font-mono" style={style}>
+        <div className="text-2xl font-black">Todo List</div>
+        <div>
           {showUndo && (
             <button onClick={onUndo} className="bg-orange-700 text-white px-3 rounded-lg text-lg cursor-pointer font-bold">UNDO</button>
           )}
           {/* <button className="bg-pink-700 ml-5 text-white px-3 rounded-lg text-lg cursor-pointer">reundo</button> */}
         </div>
         <input
-          placeholder="Press Enter to add a new TODO"
+          placeholder="Press enter to add a new todo"
           type="text"
           onKeyDown={onEnterDown}
-          className="h-12 rounded-2xl pl-5 text-2xl border-orange-500 border-2 border-solid mt-5 w-full"
+          className="h-12 rounded-lg pl-5 text-2xl border-orange-500 border-2 border-solid mt-5 w-full"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
         <ul className="w-full text-2xl mt-5">
           {list.map((i) => (
             <li className="py-2 flex justify-between border-2 px-4 rounded-lg items-center mb-4" key={i.key}>
-              <span className={`font-bold ${i.status === 'finished' ? 'line-through text-gray-400' : ''}`}>{i.todo}</span>
+              <span className={`${i.status === 'finished' ? 'line-through text-gray-400' : ''}`}>{i.todo}</span>
               <div className="text-lg">
                 <span className="cursor-pointer text-orange-500 font-bold" onClick={() => onDelete(i.key)}>DELETE</span>
                 <span className="ml-5 cursor-pointer text-pink-500 font-bold" onClick={() => onFinish(i.key)}>FINISH</span>
