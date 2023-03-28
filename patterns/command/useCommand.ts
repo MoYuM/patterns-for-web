@@ -6,6 +6,7 @@ const useCommand = () => {
 	const context = React.useContext(Context);
 	const stack = React.useRef<any[]>([]);
 
+
 	const execute = (command: Command, params?: any) => {
 		const commandOjb = command(context);
 		stack.current.push(commandOjb);
@@ -18,6 +19,7 @@ const useCommand = () => {
 			obj.undo();
 		}
 	}
+
 
 	return {
 		execute,
